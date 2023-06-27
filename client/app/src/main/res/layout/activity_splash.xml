@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:drawable/dialog_holo_light_frame">
+    <ImageView
+        android:id="@+id/logoImg"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/to_do_list_logo"
+        android:layout_centerInParent="true"
+        android:contentDescription="To Do Logo" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="To Do List"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:layout_below="@id/logoImg"
+        android:layout_centerHorizontal="true"
+        />
+    
+</RelativeLayout>
