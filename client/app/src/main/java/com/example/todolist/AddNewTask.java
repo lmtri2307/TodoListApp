@@ -2,8 +2,6 @@ package com.example.todolist;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -12,38 +10,30 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.todolist.Data.ToDoList;
-import com.example.todolist.Model.ToDoModel;
-import com.example.todolist.Utils.RequestHandler;
+import com.example.todolist.Model.ToDo;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class AddNewTask extends BottomSheetDialogFragment {
     public static final String TAG = "ActionBottomDialog";
-    private ToDoModel toDoModel = null;
+    private ToDo toDo = null;
     private Callback callback = null;
 
     private EditText newTaskText;
     private Button newTaskSaveButton;
 
 
-    public AddNewTask(ToDoModel toDoModel){
-        this.toDoModel = toDoModel;
+    public AddNewTask(ToDo toDo){
+        this.toDo = toDo;
     }
-    public AddNewTask(ToDoModel toDoModel, Callback callback){
-        this.toDoModel = toDoModel.clone();
+    public AddNewTask(ToDo toDo, Callback callback){
+        this.toDo = toDo.clone();
         this.callback = callback;
     }
     public AddNewTask(Callback callback){
-        this.toDoModel = new ToDoModel("",false,"");
+        this.toDo = new ToDo("",false,"");
         this.callback = callback;
     }
 
@@ -66,7 +56,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
         newTaskText = view.findViewById(R.id.newTaskText);
         newTaskSaveButton= view.findViewById(R.id.newTaskButton);
 
-        newTaskText.setText(toDoModel.getTask());
+        newTaskText.setText(toDo.getTask());
         newTaskText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -93,8 +83,8 @@ public class AddNewTask extends BottomSheetDialogFragment {
         newTaskSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                toDoModel.setTask(newTaskText.getText().toString());
-                callback.saveClickCallback(toDoModel);
+                toDo.setTask(newTaskText.getText().toString());
+                callback.saveClickCallback(toDo);
                 dismiss();
             }
         });
@@ -108,7 +98,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
 
 
     public interface Callback {
-        public void saveClickCallback(ToDoModel toDoModel);
+        public void saveClickCallback(ToDo toDo);
         public void dismissCallback();
     }
 }

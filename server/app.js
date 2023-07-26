@@ -8,8 +8,7 @@ var helmet = require('helmet')
 var dotenv = require('dotenv')
 dotenv.config()
 
-var usersRouter = require('./routes/users');
-var todosRouter = require('./routes/todos')
+
 
 var app = express();
 
@@ -27,25 +26,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/auth', usersRouter);
-const tokenHandler = require('./tokenHandler')
-app.use(function(req, res, next){
-  const token = req.cookies.jwt
-  if(!token){
-    res.status(403).send("Token is missing")
-    return
-  }
+// Routing
+const router = require('./routes');
+const { verifyUser } = require('./tokenHandler');
 
-  try {
-    tokenHandler.verify(token)
-  } catch (error) {
-    console.log(error)
-    res.status(403).json(error)
-    return
-  }
-  next()
-})
-app.use('/todo', todosRouter);
+app.use('/auth', router.userRouter);
+app.use(verifyUser)
+app.use('/todo', router.todoRouter);
 
 
 // catch 404 and forward to error handler

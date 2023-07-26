@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.todolist.API.UserAPI;
 import com.example.todolist.Model.User;
 import com.example.todolist.Utils.RequestHandler;
 
@@ -66,7 +67,7 @@ public class SignupFragment extends Fragment {
                 }
 
                 try {
-                    User.signup(username, password,
+                    UserAPI.signup(username, password,
                             new RequestHandler.RequestCallback() {
                                 @Override
                                 public void onResponseSucceed(@NonNull Response response) {

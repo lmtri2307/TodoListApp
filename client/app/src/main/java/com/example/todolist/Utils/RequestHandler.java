@@ -23,7 +23,7 @@ public class RequestHandler {
     static TokenExpiredCallback tokenExpiredCallback = null;
 
 //    private static final String serverUrl = "http://10.0.2.2:1234";
-    private static final String serverUrl = "http://192.168.1.17:1234";
+    private static final String serverUrl = "http://192.168.1.2:1234";
 
 
     private static OkHttpClient createClient() {

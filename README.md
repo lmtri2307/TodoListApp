@@ -1,18 +1,17 @@
 # ToDoListApp
 
-Welcome to the ToDoListApp project! This project showcases the development of a ToDo list application with a back-end developed using Node.js and Express.js, and the front-end developed in Java using Android Studio.
+Welcome to the ToDoListApp project! This project showcases a fully functional ToDo list application with a 3-tier-3-layer architecture. The app includes an Android front-end developed in Java using Android Studio, and a back-end developed with Node.js and Express.js. The data is stored in a MongoDB database, and APIs are called using Jackson and OkHttp3 libraries.
 
 ## Project Description
 
-The ToDoListApp allows users to manage their tasks and create to-do lists. The back-end of the application is developed using Node.js and Express.js, providing RESTful APIs for task management. The front-end of the app is built using Java in Android Studio, leveraging the Jackson library for JSON serialization and deserialization. API calls to the back-end are made using OkHttp3 for seamless communication and data mapping into models.
+The ToDoListApp allows users to create and manage their tasks effectively. The app follows a 3-tier-3-layer architecture, where the Android app serves as the presentation layer (UI), the back-end handles business logic and API interactions, and the MongoDB database stores the task data.
 
 ## Technologies Used
 
-- Node.js: The back-end of the ToDoListApp is developed using Node.js.
-- Express.js: The Express.js framework is used to create the RESTful APIs for task management.
-- Java (Android Studio): The front-end of the app is developed using Java in Android Studio.
-- Jackson: Jackson is utilized for JSON serialization and deserialization in the app.
-- OkHttp3: OkHttp3 library is used for making API calls and mapping data into models.
+- Android Studio: The front-end of the ToDoListApp was developed in Java using Android Studio.
+- Node.js and Express.js: The back-end of the app was developed using Node.js and Express.js to handle business logic and API endpoints.
+- MongoDB: The MongoDB database was used to store the task data.
+- Jackson and OkHttp3: Jackson library was used for JSON serialization and deserialization, while OkHttp3 was used for making API calls.
 
 ## Getting Started
 

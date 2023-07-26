@@ -12,23 +12,9 @@ var http = require('http');
 
 /**
  * Connect to database
- */
-// Import the mongoose module
-
-const mongoose = require("mongoose");
-
-mongoose.set('strictQuery', false);
-
-const mongoDB = process.env.MONGODB_URL;
-
-// Wait for database to connect, logging an error if there is a problem 
-
-async function main() {
-  await mongoose.connect(mongoDB)
-}
-
-main().then(() => { console.log("Connect database") })
-  .catch(err => console.log(err));
+*/
+const connectDB = require('../database');
+connectDB()
 
 /**
  * Get port from environment and store in Express.

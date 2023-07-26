@@ -8,26 +8,17 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.todolist.Adapter.ToDoAdapter;
-import com.example.todolist.Data.ToDoList;
-import com.example.todolist.Utils.RequestHandler;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 
 public class HomeFragment extends Fragment {
-    private ToDoAdapter tasksAdapter;
-    public ToDoList toDoList;
+    private ToDoAdapter todoAdapter;
     RecyclerView tasksRecyclerView;
 //
 //
@@ -58,42 +49,22 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         // get Data
-        toDoList = new ToDoList();
-        toDoList.getData(new RequestHandler.RequestCallback() {
-            @Override
-            public void onResponseSucceed(@NonNull Response response) {
-                Handler mainHandler = new Handler(Looper.getMainLooper());
-                mainHandler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        tasksAdapter.notifyDataSetChanged();
-                    }
-                });
-            }
-
-            @Override
-            public void onResponseFailure(@NonNull Response response) {}
-
-            @Override
-            public void onFailure(@NonNull Call call, @NonNull IOException e) {}
-        });
-
+        todoAdapter = new ToDoAdapter((MainActivity) this.getActivity());
 
         // View
         tasksRecyclerView = view.findViewById(R.id.tasksRecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
         tasksRecyclerView.setLayoutManager(layoutManager);
-        tasksAdapter = new ToDoAdapter((MainActivity) this.getActivity(), toDoList);
-        tasksRecyclerView.setAdapter(tasksAdapter);
+        tasksRecyclerView.setAdapter(todoAdapter);
 
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RecyclerItemTouchHelper(tasksAdapter));
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new RecyclerItemTouchHelper(todoAdapter));
         itemTouchHelper.attachToRecyclerView(tasksRecyclerView);
 
         FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tasksAdapter.addNewItem();
+                todoAdapter.addNewItem();
             }
         });
         return view;

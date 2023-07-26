@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.todolist.API.UserAPI;
 import com.example.todolist.Model.User;
 import com.example.todolist.Utils.RequestHandler;
 
@@ -63,7 +64,7 @@ public class LoginFragment extends Fragment {
                 String password = ((EditText)view.findViewById(R.id.editTextPassword)).getText().toString();
 
                 try {
-                    User.login(username, password,
+                    UserAPI.login(username, password,
                             new RequestHandler.RequestCallback() {
                                 @Override
                                 public void onResponseSucceed(@NonNull Response response) {
