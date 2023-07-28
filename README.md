@@ -12,7 +12,7 @@ The ToDoListApp allows users to create and manage their tasks effectively. The a
 
 ## Architecture
 
-![Architecture](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f56468a0-c801-4de9-878f-071ca5af5e9b/Untitled.png)
+![Architecture](./architecture.png)
 
 ## Technologies Used
 
