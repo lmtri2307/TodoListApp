@@ -2,9 +2,17 @@
 
 Welcome to the ToDoListApp project! This project showcases a fully functional ToDo list application with a 3-tier-3-layer architecture. The app includes an Android front-end developed in Java using Android Studio, and a back-end developed with Node.js and Express.js. The data is stored in a MongoDB database, and APIs are called using Jackson and OkHttp3 libraries.
 
+## Demo
+
+https://youtu.be/atKfeebnaLw
+
 ## Project Description
 
 The ToDoListApp allows users to create and manage their tasks effectively. The app follows a 3-tier-3-layer architecture, where the Android app serves as the presentation layer (UI), the back-end handles business logic and API interactions, and the MongoDB database stores the task data.
+
+## Architecture
+
+![Architecture](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f56468a0-c801-4de9-878f-071ca5af5e9b/Untitled.png)
 
 ## Technologies Used
 
