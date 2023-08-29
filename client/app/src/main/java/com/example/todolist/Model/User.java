@@ -18,13 +18,10 @@ import okhttp3.Response;
 
 public class User {
     public static User instance;
-    String _id;
     String username;
 
-
     @JsonCreator
-    public User(@JsonProperty("_id") String _id, @JsonProperty("username") String username) {
-        this._id = _id;
+    public User(@JsonProperty("email") String username) {
         this.username = username;
     }
 }

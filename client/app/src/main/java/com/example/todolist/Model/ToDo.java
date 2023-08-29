@@ -24,7 +24,7 @@ public class ToDo implements Serializable, Cloneable {
 
 
     @JsonCreator
-    public ToDo(@JsonProperty("_id") String id,
+    public ToDo(@JsonProperty("id") String id,
                 @JsonProperty("status") boolean status,
                 @JsonProperty("task") String task) {
         this._id = id;

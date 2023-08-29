@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Interceptor;
@@ -23,8 +24,8 @@ public class RequestHandler {
     static TokenExpiredCallback tokenExpiredCallback = null;
 
 //    private static final String serverUrl = "http://10.0.2.2:1234";
-    private static final String serverUrl = "http://192.168.1.2:1234";
-
+    private static final String serverUrl = "http://192.168.1.6:1234";
+//
 
     private static OkHttpClient createClient() {
         CookieManager cookieManager = new CookieManager();
@@ -32,6 +33,9 @@ public class RequestHandler {
         client = new OkHttpClient.Builder()
                 .cookieJar(new JavaNetCookieJar(cookieManager))
                 .addInterceptor(new ExpiredTokenInterceptor())
+                .connectTimeout(10, TimeUnit.SECONDS)
+                .writeTimeout(10, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
                 .build();
         return client;
     }

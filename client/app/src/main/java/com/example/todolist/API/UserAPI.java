@@ -19,7 +19,7 @@ public class UserAPI {
     public static void login(String username, String password,
                              RequestHandler.RequestCallback callback) throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("username", username);
+        jsonObject.put("email", username);
         jsonObject.put("password", password);
 
         RequestHandler.post(false,"/auth/login", jsonObject, new RequestHandler.RequestCallback() {
@@ -48,7 +48,7 @@ public class UserAPI {
     public static void signup(String username, String password,
                               RequestHandler.RequestCallback callback) throws JSONException {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("username", username);
+        jsonObject.put("email", username);
         jsonObject.put("password", password);
 
         RequestHandler.post(false, "/auth/register", jsonObject, new RequestHandler.RequestCallback() {

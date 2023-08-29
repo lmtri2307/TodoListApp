@@ -21,7 +21,7 @@ import okhttp3.Response;
 
 public class ToDoAPI {
     public static void getData(@Nullable RequestHandler.RequestCallback callback) {
-        RequestHandler.get(false,"/todo", new RequestHandler.RequestCallback() {
+        RequestHandler.get(false,"/todo/all", new RequestHandler.RequestCallback() {
             @Override
             public void onResponseSucceed( @NonNull Response response) {
                 if (callback != null) {
@@ -51,7 +51,7 @@ public class ToDoAPI {
             jsonObject.put("status", toDo.getStatus());
             jsonObject.put("task", toDo.getTask());
 
-            RequestHandler.post(false, "/todo", jsonObject, new RequestHandler.RequestCallback() {
+            RequestHandler.post(false, "/todo/new", jsonObject, new RequestHandler.RequestCallback() {
                 @Override
                 public void onResponseSucceed(@NonNull Response response) {
                     if(addTaskCallback != null){
@@ -82,9 +82,9 @@ public class ToDoAPI {
     public static void deleteTask(ToDo toDo, @Nullable RequestHandler.RequestCallback callback) {
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("todoId", toDo.getId());
+            jsonObject.put("id", toDo.getId());
 
-            RequestHandler.delete(false, "/todo", jsonObject,
+            RequestHandler.delete(false, "/todo/del", jsonObject,
                     new RequestHandler.RequestCallback() {
                         @Override
                         public void onResponseSucceed(@NonNull Response response) {
